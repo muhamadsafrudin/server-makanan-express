@@ -4,7 +4,21 @@ const HOST_API = "https://masak-apa.tomorisakura.vercel.app";
 
 exports.getRecipes = (req, res) => {
   request(`${HOST_API}/api/recipes/${req.params.page}`, (err, body) => {
-    res.send(body.body);
+    if (body.statusCode == 200) {
+      res.send(
+        {
+          data: JSON.parse(body.body).results,
+        },
+        200
+      );
+    } else {
+      res.send(
+        {
+          message: "Server Error",
+        },
+        500
+      );
+    }
   });
 };
 
