@@ -1,6 +1,9 @@
 {
-    "buildCommand": "next build",
-    "cleanUrls": true
-
-    
-}
+    "version": 2,
+    "builds": [
+      {
+        "src": "./bin/www",
+        "use": "@now/node"
+      }
+    ]
+  }
